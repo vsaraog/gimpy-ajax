@@ -1,0 +1,10 @@
+button {
+    background-color: teal;
+    color: white;
+    margin-right: 5px;
+}
+
+.ajax-item {
+    float: left;
+    margin-right: 10px;
+}

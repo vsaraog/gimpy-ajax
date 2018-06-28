@@ -3,112 +3,23 @@
 
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="assets/css/style.css">
   <title>Quoth the Giphy</title>
 </head>
 
 <body>
-  <div class="buttons">
-    <button class="search-gimpy" data-person="arnold schwarzenegger">
-      I'll be back
-    </button>
-    <button class="search-gimpy" data-person="michael j fox">
-      My happiness grows in direct proportion to my acceptance,
-      and in inverse proportion to my expectations.
-    </button>
-   
-  </div>
+  <div class="buttons"></div>
   <div>
-      Add something
-    </div>
-    <input type="text" class="user-input"></input>
-    <button class="btn-search">Search</button>
-
-    <!-- STEP ONE: Open this file in the browser and click on the buttons. Watch what happens -->
-
-    <!-- STEP TWO: between the dashed lines below
-            * add three more buttons
-            * add a data-person attribute of famous people you know
-            * with a quote said by them -->
-
-    <!-- **************************************** -->
-
-    <!-- YOUR BUTTONS GO HERE!!!!!! Obviously delete this text after you put them between the dashed lines here.  -->
-
-    <!-- **************************************** -->
-
-
-    <!-- STEP THREE: open this file in the browser and click on your buttons. If they don't work, then fix your buttons -->
-
-    <!-- STEP FOUR: go over the JavaScript with your partners, and explain the lines of code to each other. -->
-
-
-  <div id="gifs-appear-here">
+    <b>Add an animated movie</b>
   </div>
+  <input type="text" class="user-input"></input>
+  <button class="btn-search">Search</button>
+
+  <div id="gifs-appear-here">  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-  $(document).on("click", ".btn-search", function() {
-    console.log("search pressed");
-    let userIn = $(".user-input").val();
+  <script type="text/javascript" src="assets/javascript/app.js"></script>
 
-    $("<button>").
-    addClass("search-gimpy").
-    attr("data-person", userIn).
-    text(userIn).
-    appendTo($(".buttons"));
-  })
-
-  $(document).on("click", ".images", function() {
-    if ($(this).attr("data-still") === "true") {
-      $(this).attr("src", $(this).attr("image-move"));
-      $(this).attr("data-still", "false");
-    }
-    else {
-      $(this).attr("src", $(this).attr("image-still"));
-      $(this).attr("data-still", "true");
-    }
-  })
-
-    // $(".search-gimpy").on("click", function() {
-    $(document).on("click", ".search-gimpy", function() {
-      $("#gifs-appear-here").html("");
-
-      var person = $(this).attr("data-person");
-      let appKey = "3AzDFpfTyJGXuBgEAeMFLz2LDCKAEJHl";
-      var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-        person + "&api_key=" + appKey + "&limit=10";
-
-      $.ajax({
-        url: queryURL,
-        method: "GET"
-      })
-        .then(function(response) {
-          var results = response.data;
-
-          for (var i = 0; i < results.length; i++) {
-            let gifData = results[i];
-            var gifDiv = $("<div class='item'>");
-
-            var rating = gifData.rating;
-
-            var p = $("<p>").text("Rating: " + rating);
-
-            var personImage = $("<img>");
-            let stillUrl = gifData.images.fixed_height_still.url;
-            personImage.attr("image-still", stillUrl);
-            personImage.attr("image-move", gifData.images.fixed_height.url);
-            personImage.attr("data-still", "true");
-            personImage.attr("src", stillUrl);
-            personImage.addClass("images");
-
-            gifDiv.prepend(p);
-            gifDiv.prepend(personImage);
-
-            $("#gifs-appear-here").prepend(gifDiv);
-          }
-        });
-    });
-  </script>
 </body>
 
 </html>
