@@ -2,9 +2,28 @@ button {
     background-color: teal;
     color: white;
     margin-right: 5px;
+    /* width: 60px; */
+    height: 40px;
+}
+
+.btn-search {
+    background-color: pink;
+    height: 2.3rem;
+    top: -5px;
+    position: relative;
 }
 
 .ajax-item {
     float: left;
     margin-right: 10px;
+}
+
+.user-input {
+    width: 20rem;
+    height: 2rem;
+}
+
+input[type="text"] {
+    font-size: 1.5rem;
+    color: teal ;
 }

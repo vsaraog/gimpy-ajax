@@ -32,9 +32,11 @@ function trim(str) {
 // Adds a button with text given in input text field
 $(document).on("click", ".btn-search", function () {
     console.log("search pressed");
-    let userIn = $(".user-input").val();
+    let txtInput = $(".user-input");
+    let userIn = txtInput.val();
     if (userIn != "") {
         addButton(userIn);
+        txtInput.val("");
     }
 })
 
@@ -86,3 +88,11 @@ $(document).on("click", ".search-gimpy", function () {
         }
     });
 });
+
+
+// Data persistence is storing the data in hard disk
+// client side is on the user side, server side is on 
+// the site, which serves the website
+// server side: sensitive information, access across various devices
+// client side: fast access
+// 
